@@ -21,8 +21,27 @@ from typing import Any
 
 # ── Live cluster configuration (from the demo brief) ───────────────────────────
 
-BINARY = "/Users/jsy/Documents/projects/target/release/mqo-mcp-server"
-CATALOG = "/Users/jsy/Documents/projects/mqo-mcp-server/fixtures/tpcds_catalog.json"
+def _resolve_binary() -> str:
+    if v := os.environ.get("MQO_MCP_BINARY"):
+        return v
+    here = Path(__file__).parent
+    # sibling-repo build (co-worker clone): ../mqo-mcp-server/target/release/
+    candidate = here.parent / "mqo-mcp-server" / "target" / "release" / "mqo-mcp-server"
+    if candidate.exists():
+        return str(candidate)
+    # shared workspace build (Joe's setup): ../target/release/
+    return str(here.parent / "target" / "release" / "mqo-mcp-server")
+
+
+def _resolve_catalog() -> str:
+    if v := os.environ.get("MQO_MCP_CATALOG"):
+        return v
+    here = Path(__file__).parent
+    return str(here.parent / "mqo-mcp-server" / "fixtures" / "tpcds_catalog.json")
+
+
+BINARY = _resolve_binary()
+CATALOG = _resolve_catalog()
 ENDPOINT = "mcp-aws.atscaleinternal.com:15432"
 XMLA_URL = "https://mcp-aws.atscaleinternal.com/v1/xmla"
 OIDC_TOKEN_URL = (
