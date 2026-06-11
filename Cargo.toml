@@ -4,9 +4,7 @@ resolver = "2"
 # MQO/MCP + dataset-handle cluster
 # Crates outside this directory (e.g. ~/builds/) are separate projects.
 # *-port crates (wintermute agent integration ports) are not members — different concern.
-# mqo-mdx-compiler vendors mqo-spec for CI isolation — kept outside the workspace.
-# All other *-port crates (wintermute agent integration) are also excluded.
-exclude = ["mqo-mdx-compiler"]
+exclude = []
 
 members = [
     # ── Foundation ───────────────────────────────────────────────────────────
@@ -18,6 +16,7 @@ members = [
     # They share the workspace for consistent build settings and `cargo test --workspace`.
     "mqo-catalog-binder",    # MQO → BoundMqo (resolves unique_names against CatalogSnapshot)
     "mqo-dax-compiler",      # BoundMqo → DAX EVALUATE statement
+    "mqo-mdx-compiler",      # BoundMqo → MDX SELECT statement
     "mqo-backend-router",    # BoundMqo + stats → backend choice (dax/mdx/sql) + sql_projection
 
     # ── Chart / visualization ─────────────────────────────────────────────
@@ -67,6 +66,12 @@ members = [
     "mqoguard-column-group-enrichment",
     "mqoguard-compatibility-matrix",
     "mqoguard-regression-harness",
+    "mqoguard-filter-bind-report",
+    "mqoguard-null-path-detector",
+
+    # ── Parity coverage tracker + brief ──────────────────────────────────
+    "mqo-parity-coverage-tracker", # JSONL history store + coverage/delta CLI
+    "mqo-parity-brief", "mqo-chart-caption", "mqo-chart-vocab",        # offline Markdown brief from parity-coverage-tracker JSONL history
 ]
 
 # Shared dependency versions — member crates may opt in with `dep = { workspace = true }`.
