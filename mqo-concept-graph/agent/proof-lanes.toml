@@ -4,7 +4,7 @@
 [[lane]]
 id = "rust-source"
 description = "Behavior changes in src/"
-globs = ["src/**/*.rs"]
+globs = ["mqo-concept-graph/src/**/*.rs", "src/**/*.rs"]
 required_commands = [
   "cargo check",
   "cargo clippy -- -D warnings",
@@ -14,7 +14,7 @@ required_commands = [
 [[lane]]
 id = "rust-tests"
 description = "Test-only changes in tests/"
-globs = ["tests/**/*.rs"]
+globs = ["mqo-concept-graph/tests/**/*.rs", "tests/**/*.rs"]
 required_commands = [
   "cargo test --tests",
 ]
@@ -22,7 +22,7 @@ required_commands = [
 [[lane]]
 id = "deps"
 description = "Cargo.toml / Cargo.lock changes"
-globs = ["Cargo.toml", "Cargo.lock"]
+globs = ["mqo-concept-graph/Cargo.toml", "mqo-concept-graph/Cargo.lock", "Cargo.toml", "Cargo.lock"]
 required_commands = [
   "cargo check",
 ]
@@ -30,5 +30,17 @@ required_commands = [
 [[lane]]
 id = "agent"
 description = "Agent metadata (intent-card, proof-lanes)"
-globs = ["agent/**"]
+globs = ["mqo-concept-graph/agent/**", "agent/**"]
+required_commands = []
+
+[[lane]]
+id = "scripts"
+description = "Build / metric scripts"
+globs = ["mqo-concept-graph/scripts/**", "scripts/**"]
+required_commands = []
+
+[[lane]]
+id = "autobuilder-artifacts"
+description = "Generated autobuilder artifacts (target/autobuilder/)"
+globs = ["mqo-concept-graph/target/autobuilder/**", "target/autobuilder/**"]
 required_commands = []
