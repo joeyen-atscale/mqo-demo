@@ -52,6 +52,7 @@ members = [
 
     # ── Evidence bundle ───────────────────────────────────────────────────
     "mcp-spike-evidence-bundle",   # capstone: map ATSCALE-49212..49215 ACs to artifact verdicts
+    "mcp-investigation-orchestrator",
 
     # ── Dataset-handle (dh-*) cluster ────────────────────────────────────
     # Vision: dataset-handle-mcp.md; dh-mcp-server links to mqo-mcp-server
