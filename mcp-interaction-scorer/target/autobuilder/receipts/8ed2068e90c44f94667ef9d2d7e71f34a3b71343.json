@@ -1,0 +1,18 @@
+{
+  "ac_passing_count": 4,
+  "ac_total_count": 4,
+  "audit": {
+    "advisory_count": 0,
+    "blocking_count": 0
+  },
+  "captured_at": "2026-06-12T00:59:30Z",
+  "clippy_warning_count": 0,
+  "head_sha": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
+  "iteration": 1,
+  "metric_name": "tests_pass_count",
+  "metric_value": 10.0,
+  "previous_metric_value": null,
+  "receipt_digest": "sha256:242f6924b5b64b3ca6d6d319065d2773490c5ca0d1f4d6131e2ffbf6124416c6",
+  "schema": "autobuilder.iteration_receipt.v1",
+  "verdict": "baseline"
+}
