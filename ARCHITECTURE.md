@@ -68,10 +68,6 @@ mqo-mdx-compiler     BoundMqo JSON → MDX SELECT text  (*)
 mqo-backend-router   BoundMqo + CatalogStats → routing decision JSON
 ```
 
-(*) `mqo-mdx-compiler` vendors `mqo-spec` for CI isolation and is excluded from
-this workspace. It is the only crate with this design — all others use the
-workspace copy.
-
 **Why subprocess:** these tools are independently deployable, testable without
 the server, and can be updated without recompiling the server. The compose-by-JSON
 pattern also means a Python or Go client can call them. The server assembles the
@@ -172,13 +168,33 @@ stdio/JSON-RPC, not via linked code. They're in the workspace for consistent
 
 ## The dh-* cluster
 
-`dh-mcp-server` is a successor server that links `mqo-mcp-server` as a library
-and adds the full `dh-ops` kernel (aggregate/filter/sort/top_n/pivot/compare/drill).
-The `dataset_*` tools in `mqo-mcp-server` v0.6.x are a minimal subset of the
-`dh-ops` surface — promoted from the handle walkthrough proof-of-concept.
+The dh-* fleet shipped complete with all tests passing. It consists of seven crates:
 
-The longer-term direction is `dh-mcp-server` subsuming `mqo-mcp-server`, once
-the full op set and cross-session handle durability are proven.
+- **dh-spec** — shared types and JSON Schema for the dh op surface
+- **dh-store** — persistent handle/cursor store (replaces the in-process MemStore)
+- **dh-ops** — full op kernel: aggregate, filter, sort, top_n, pivot, compare, drill
+- **dh-summary** — natural-language summary generation over dh op results
+- **dh-export** — CSV/Parquet/Arrow export from dh handles
+- **dh-mcp-server** — Gen-5 successor MCP server; links dh-* and mqo-* as libraries
+- **dh-vs-json-bench** — benchmark comparing dh binary protocol vs JSON round-trips
+
+`dh-mcp-server` is the Gen-5 successor server. The `dataset_*` tools in
+`mqo-mcp-server` v0.6.x are a minimal subset of the `dh-ops` surface — promoted
+from the handle walkthrough proof-of-concept.
+
+---
+
+## Generation arc
+
+| Gen | Crates | Status |
+|---|---|---|
+| 1–4 | mqo-spec, mqo-auth-bridge, mqo-catalog-binder, mqo-dax/mdx-compiler, mqo-backend-router, mqo-result-profiler, mqo-chart-recommender, mqo-vega-emitter, mqo-mcp-server | Shipped |
+| 5 | dh-spec, dh-store, dh-ops, dh-summary, dh-export, dh-mcp-server, dh-vs-json-bench, mqo-session-footprint-meter, mqo-param-validator, mqo-paramq-bench, mqo-handle-walkthrough | Shipped |
+| 6 | mcp-cluster-registry, mcp-cluster-health-monitor, mcp-cross-cluster-diff | Shipped |
+| 7 | mcp-trace-store, mcp-coverage-gap-miner, mcp-interaction-scorer | Shipped |
+| 8 | mcp-concept-graph, mqo-concept-graph, mqo-graph-traversal | Shipped |
+| 9 | mcp-watch-daemon, mcp-hypothesis-engine, mcp-query-budget-governor, mcp-standing-query, mcp-insight-digest, mcp-collab-session | Shipped |
+| 10–11 | mcp-probe-executor, mcp-finding-store, mcp-investigation-orchestrator | Shipped |
 
 ---
 
@@ -205,7 +221,7 @@ the full op set and cross-session handle durability are proven.
 cd ~/Documents/projects
 cargo check --workspace
 
-# Run all tests (excludes mqo-mdx-compiler — run that separately)
+# Run all tests (covers all workspace crates)
 cargo test --workspace --release
 
 # Build the capstone server
@@ -219,13 +235,6 @@ cargo test -p mqo-duckdb-handle-store --release
 cargo tree --workspace --duplicates
 ```
 
-`mqo-mdx-compiler` is excluded from this workspace (see `exclude` in Cargo.toml).
-Run it standalone:
-```bash
-cd ~/Documents/projects/mqo-mdx-compiler
-cargo test --release
-```
-
 ---
 
 ## What's NOT here
@@ -234,4 +243,3 @@ cargo test --release
   SQL to MQO; included in the workspace but has no path deps from the server.
 - **`*-port` crates** — wintermute agent integration ports; different concern entirely.
 - **`slai-*`, `recall-*`, `provfs-*`** — unrelated to the MQO pipeline.
-- **`mqo-mdx-compiler`** — excluded (vendored dep conflict); build standalone.
