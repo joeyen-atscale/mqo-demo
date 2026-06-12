@@ -10,6 +10,8 @@ The conversation is refinable ("break that down by month", "add a filter", ...).
 from __future__ import annotations
 
 import json
+import random
+from pathlib import Path
 from typing import Any
 
 import anthropic
@@ -19,6 +21,46 @@ from mcp_bridge import MODEL_PATH, McpBridge, McpError
 
 MODEL = "claude-sonnet-4-6"
 MAX_TOOL_ITERATIONS = 12
+
+# Sampled from the TPC-DS 100-NLQ failure-mode corpus; bundled so the demo is
+# self-contained and does not depend on the mcp-tuner repo at runtime.
+NLQ_PATH = Path(__file__).parent / "tpcds_nlq.json"
+NUM_SUGGESTIONS = 3
+
+
+@st.cache_data
+def _load_nlq() -> list[str]:
+    """Load the bundled TPC-DS natural-language questions (cached for the process)."""
+    try:
+        questions = json.loads(NLQ_PATH.read_text())
+    except Exception:  # noqa: BLE001 — missing/corrupt file degrades gracefully to no chips
+        return []
+    return [q for q in questions if isinstance(q, str) and q.strip()]
+
+
+def _sample_questions(k: int = NUM_SUGGESTIONS) -> list[str]:
+    """A fresh random mix of k questions from the corpus."""
+    pool = _load_nlq()
+    return random.sample(pool, min(k, len(pool))) if pool else []
+
+
+def _render_suggestions() -> None:
+    """Render clickable example-question chips that seed the input on click.
+
+    The chosen question is stashed in ``_pending_q`` and consumed by ``main``
+    on the next rerun, so a click behaves exactly like typing + submitting.
+    """
+    if "sample_qs" not in st.session_state:
+        st.session_state.sample_qs = _sample_questions()
+    samples = st.session_state.sample_qs
+    if not samples:
+        return
+    st.caption("Try one of these — or type your own below:")
+    for i, question in enumerate(samples):
+        if st.button(question, key=f"suggest_{i}", use_container_width=True):
+            st.session_state._pending_q = question
+            st.session_state.sample_qs = _sample_questions()  # rotate for next time
+            st.rerun()
 
 SYSTEM_PROMPT = f"""\
 You are a BI analyst assistant for AtScale, demonstrating natural-language \
@@ -354,7 +396,11 @@ def main() -> None:
     for msg in st.session_state.chat:
         render_message(msg)
 
-    prompt = st.chat_input("Ask a BI question…")
+    _render_suggestions()
+
+    typed = st.chat_input("Ask a BI question…")
+    # A clicked suggestion (queued on the previous run) takes precedence.
+    prompt = st.session_state.pop("_pending_q", None) or typed
     if not prompt:
         return
 
@@ -407,7 +453,8 @@ def main() -> None:
                 st.warning(f"Could not render chart: {e}")
                 st.json(spec)
 
-    # Refresh the sidebar backend indicator.
+    # Rotate the example chips and refresh the sidebar backend indicator.
+    st.session_state.sample_qs = _sample_questions()
     st.rerun()
 
 
