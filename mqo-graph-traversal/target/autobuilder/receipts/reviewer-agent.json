@@ -1,0 +1,34 @@
+{
+  "schema": "autobuilder.reviewer_agent_receipt.v1",
+  "head_sha": "94e8a32b9c958a55b61066bda1901d53204e39ba",
+  "captured_at": "2026-06-12T01:12:03Z",
+  "verdict": "pass",
+  "decision": "pass",
+  "findings": [
+    {
+      "ac_id": "AC1",
+      "verdict": "pass",
+      "note": "build_graph_node_edge_count asserts both node count (5) and edge count (5) for a concrete fixture. Test fails if from_describe_model drops any node category or miscounts edges."
+    },
+    {
+      "ac_id": "AC2",
+      "verdict": "pass",
+      "note": "related_measures_depth_and_missing verifies: depth-1 neighbors include revenue/cost/margin (undirected), depth-2 from revenue reaches margin, ascending distance ordering, missing start returns empty vec."
+    },
+    {
+      "ac_id": "AC3",
+      "verdict": "pass",
+      "note": "causal_paths_structural_evidence verifies: non-empty result for measure with derivation edges, evidence_type=Structural on every path, each step uses DerivesFrom or FiltersBy, ascending length sort, empty for leaf, empty for unknown."
+    },
+    {
+      "ac_id": "AC4",
+      "verdict": "pass",
+      "note": "suggest_next_questions_neighbors: with partial context {revenue}, profit is suggested; with full context suggestions are empty. Context nodes excluded from suggestions."
+    },
+    {
+      "ac_id": "AC5",
+      "verdict": "pass",
+      "note": "serde_roundtrip exercises ConceptGraphSnapshot, RelatedMeasure, CausalPath, NextQuestion, EdgeKind, EvidenceType, PathStep. Node+edge counts match after round-trip via ConceptGraph::from_snapshot."
+    }
+  ]
+}

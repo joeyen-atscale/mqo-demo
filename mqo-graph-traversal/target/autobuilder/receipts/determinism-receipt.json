@@ -1,0 +1,1 @@
+{"schema":"autobuilder.determinism_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"pass","notes":"All public functions are pure/deterministic: build_graph is a pure JSON→graph transform; traversal functions take &ConceptGraph and return deterministic results. No random, time, or I/O in hot path."}

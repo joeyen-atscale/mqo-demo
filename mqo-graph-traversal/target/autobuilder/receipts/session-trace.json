@@ -1,0 +1,16 @@
+{
+  "captured_at": "2026-06-12T01:11:36Z",
+  "constraints_evaluated": {},
+  "head_sha": "94e8a32b9c958a55b61066bda1901d53204e39ba",
+  "notes": [],
+  "receipt_digest": "sha256:1e4652d424cc1ac729697b5a0d2589c6987ca9f762ef35cf3fe4865279f7322b",
+  "schema": "autobuilder.session_trace_receipt.v1",
+  "skip_reason": "--trace flag not set; session tracing skipped for this iteration",
+  "tracer": {
+    "event_count": 0,
+    "log_path": "",
+    "log_sha256": "",
+    "tool": "ctrace"
+  },
+  "verdict": "skipped"
+}

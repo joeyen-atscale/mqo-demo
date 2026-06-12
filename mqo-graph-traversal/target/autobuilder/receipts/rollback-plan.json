@@ -1,0 +1,16 @@
+{
+  "schema": "autobuilder.rollback_plan_receipt.v1",
+  "head_sha": "94e8a32b9c958a55b61066bda1901d53204e39ba",
+  "base_sha": "a631f2f507236d2f01906ab99af3015bb10b2827",
+  "base_ref": "HEAD~1",
+  "captured_at": "2026-06-12T01:12:03Z",
+  "commit_count": 2,
+  "revertable_count": 2,
+  "blocking_count": 0,
+  "commits": [
+    {"sha": "94e8a32b9c958a55b61066bda1901d53204e39ba", "short_sha": "94e8a32", "subject": "autobuilder: add run-metrics.sh for mqo-graph-traversal", "parent_count": 1, "revertable": true, "note": "clean revert"},
+    {"sha": "a631f2f507236d2f01906ab99af3015bb10b2827", "short_sha": "a631f2f", "subject": "autobuilder: implement mqo-graph-traversal", "parent_count": 1, "revertable": true, "note": "clean revert"}
+  ],
+  "rollback_md": "target/autobuilder/rollback.md",
+  "verdict": "pass"
+}

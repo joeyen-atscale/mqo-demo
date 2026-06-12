@@ -1,0 +1,1 @@
+{"schema":"autobuilder.mutation_kill_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"skipped","notes":"cargo-mutants not run in v1 autobuilder loop. Acceptance tests cover structural correctness; mutation testing deferred to v2."}

@@ -1,0 +1,1 @@
+{"schema":"autobuilder.semver_check_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"skipped","notes":"New crate v0.1.0; no previous published version to check semver against."}

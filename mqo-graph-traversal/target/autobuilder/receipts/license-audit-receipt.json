@@ -1,0 +1,1 @@
+{"schema":"autobuilder.license_audit_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"pass","findings":[],"notes":"MIT OR Apache-2.0 declared. All transitive deps (serde, serde_json, petgraph, indexmap) use MIT/Apache-2.0/BSD-3-Clause. No copyleft or proprietary licenses."}

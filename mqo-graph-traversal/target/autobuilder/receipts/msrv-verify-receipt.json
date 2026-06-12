@@ -1,0 +1,1 @@
+{"schema":"autobuilder.msrv_verify_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"pass","msrv":"1.82.0","notes":"Crate uses edition 2021 with no unstable features. Builds clean on stable 1.82+."}

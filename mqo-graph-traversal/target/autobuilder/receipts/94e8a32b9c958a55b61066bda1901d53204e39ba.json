@@ -1,0 +1,11 @@
+{
+  "schema": "autobuilder.iteration_receipt.v1",
+  "head_sha": "94e8a32b9c958a55b61066bda1901d53204e39ba",
+  "captured_at": "2026-06-12T01:12:03Z",
+  "iteration": 1,
+  "verdict": "advance",
+  "tests_pass_count": 14,
+  "ac_passing_count": 5,
+  "ac_total_count": 5,
+  "notes": "All 5 MUST ACs green. 14 tests pass. Clippy clean."
+}

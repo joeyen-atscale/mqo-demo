@@ -1,0 +1,1 @@
+{"schema":"autobuilder.sbom_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"pass","component_count":4,"components":["serde 1.x","serde_json 1.x","petgraph 0.6.x","mqo-concept-graph 0.1.0"]}
