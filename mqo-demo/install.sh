@@ -5,6 +5,7 @@ set -euo pipefail
 
 DEMO_DIR="$(cd "$(dirname "$0")" && pwd)"
 PARENT_DIR="$(dirname "$DEMO_DIR")"
+MQO_MCP_DIR="$PARENT_DIR/mqo-mcp"
 LOCAL_BIN="$HOME/.local/bin"
 
 GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; NC='\033[0m'
@@ -35,39 +36,43 @@ fi
 
 mkdir -p "$LOCAL_BIN"
 
-# ── 2. Clone + build the MQO fleet ─────────────────────────────────────────────
-# mqo-mcp-server orchestrates these four binaries as subprocesses.
-# They're installed to ~/.local/bin, which the server checks automatically.
+# ── 2. Clone + build the MQO fleet monorepo ────────────────────────────────────
 
-clone_and_build() {
-  local repo="$1"
-  local binary="$2"   # binary name to install (empty = lib only, skip install)
-  local dir="$PARENT_DIR/$repo"
+if [ ! -d "$MQO_MCP_DIR" ]; then
+  echo ""
+  echo "Cloning mqo-mcp monorepo..."
+  git clone https://github.com/joeyen-atscale/mqo-mcp.git "$MQO_MCP_DIR"
+  ok "cloned mqo-mcp"
+else
+  ok "mqo-mcp found at $MQO_MCP_DIR"
+fi
 
-  if [ ! -d "$dir" ]; then
-    echo "  Cloning $repo..."
-    git clone "https://github.com/joeyen-atscale/$repo.git" "$dir" --quiet
+FLEET_BINARIES=(mqo-mcp-server mqo-bind mqo-route mqo-dax mqo-mdx)
+NEEDS_BUILD=false
+for bin in "${FLEET_BINARIES[@]}"; do
+  if [ ! -x "$LOCAL_BIN/$bin" ]; then
+    NEEDS_BUILD=true
+    break
   fi
+done
 
-  if [ -n "$binary" ]; then
-    if [ -x "$LOCAL_BIN/$binary" ]; then
-      ok "$binary already installed"
-      return
-    fi
-    echo "  Building $repo..."
-    cargo build --release --manifest-path "$dir/Cargo.toml" --quiet
-    cp "$dir/target/release/$binary" "$LOCAL_BIN/$binary"
-    ok "installed $binary → $LOCAL_BIN/$binary"
-  fi
-}
+if [ "$NEEDS_BUILD" = true ]; then
+  echo ""
+  echo "Building fleet (~2 min first time)..."
+  cargo build --release --manifest-path "$MQO_MCP_DIR/Cargo.toml" \
+    -p mqo-mcp-server -p mqo-catalog-binder -p mqo-backend-router \
+    -p mqo-dax-compiler -p mqo-mdx-compiler --quiet
 
-echo "Setting up MQO fleet..."
-clone_and_build "mqo-spec"             ""
-clone_and_build "mqo-catalog-binder"   "mqo-bind"
-clone_and_build "mqo-backend-router"   "mqo-route"
-clone_and_build "mqo-dax-compiler"     "mqo-dax"
-clone_and_build "mqo-mdx-compiler"     "mqo-mdx"
-clone_and_build "mqo-mcp-server"       "mqo-mcp-server"
+  RELEASE="$MQO_MCP_DIR/target/release"
+  cp "$RELEASE/mqo-mcp-server" "$LOCAL_BIN/mqo-mcp-server"
+  cp "$RELEASE/mqo-bind"       "$LOCAL_BIN/mqo-bind"
+  cp "$RELEASE/mqo-route"      "$LOCAL_BIN/mqo-route"
+  cp "$RELEASE/mqo-dax"        "$LOCAL_BIN/mqo-dax"
+  cp "$RELEASE/mqo-mdx"        "$LOCAL_BIN/mqo-mdx"
+  ok "fleet binaries installed to $LOCAL_BIN"
+else
+  ok "fleet binaries already installed"
+fi
 
 # ── 3. Python venv ─────────────────────────────────────────────────────────────
 

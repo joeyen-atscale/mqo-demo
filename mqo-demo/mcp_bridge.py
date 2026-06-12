@@ -25,11 +25,15 @@ def _resolve_binary() -> str:
     if v := os.environ.get("MQO_MCP_BINARY"):
         return v
     here = Path(__file__).parent
-    # sibling-repo build (co-worker clone): ../mqo-mcp-server/target/release/
+    # monorepo build (standard): ../mqo-mcp/target/release/
+    candidate = here.parent / "mqo-mcp" / "target" / "release" / "mqo-mcp-server"
+    if candidate.exists():
+        return str(candidate)
+    # sibling-repo build (legacy): ../mqo-mcp-server/target/release/
     candidate = here.parent / "mqo-mcp-server" / "target" / "release" / "mqo-mcp-server"
     if candidate.exists():
         return str(candidate)
-    # shared workspace build (Joe's setup): ../target/release/
+    # shared workspace build (Joe's local setup): ../target/release/
     return str(here.parent / "target" / "release" / "mqo-mcp-server")
 
 
@@ -37,6 +41,10 @@ def _resolve_catalog() -> str:
     if v := os.environ.get("MQO_MCP_CATALOG"):
         return v
     here = Path(__file__).parent
+    for base in [here.parent / "mqo-mcp", here.parent / "mqo-mcp-server"]:
+        candidate = base / "mqo-mcp-server" / "fixtures" / "tpcds_catalog.json"
+        if candidate.exists():
+            return str(candidate)
     return str(here.parent / "mqo-mcp-server" / "fixtures" / "tpcds_catalog.json")
 
 
