@@ -1,37 +1,14 @@
 {
-  "base_ref": "HEAD~2",
-  "base_sha": "87c2b4d9033f4e4afdd10e3dfb9242891f213502",
-  "captured_at": "2026-06-12T01:01:33Z",
-  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "base_ref": "HEAD~1",
+  "base_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "captured_at": "2026-06-12T01:03:17Z",
+  "head_sha": "578470fdcf28bf5d8516a0f9e7df882fc4dd4416",
   "min_confidence": 0.7,
   "proof_lanes_path": "agent/proof-lanes.toml",
   "proof_lanes_sha256": "sha256:9cbd588be905d2639ba73f35b9c9bfd509b1040713d4bb267978f600d4936427",
-  "receipt_digest": "sha256:4e0c35192b6c79609bee4730ddcb8139c282f0f01b40b3b5840ee9faf230e10c",
-  "required_commands": [
-    "cargo check"
-  ],
+  "receipt_digest": "sha256:336869e16de585adf419d95813ef1bfee0962ed37716668ee3091d04f04567cd",
+  "required_commands": [],
   "routes": [
-    {
-      "confidence": 1.0,
-      "lanes": [
-        "deps"
-      ],
-      "path": "Cargo.toml"
-    },
-    {
-      "confidence": 1.0,
-      "lanes": [
-        "agent"
-      ],
-      "path": "mqo-concept-graph/agent/proof-lanes.toml"
-    },
-    {
-      "confidence": 1.0,
-      "lanes": [
-        "scripts"
-      ],
-      "path": "mqo-concept-graph/scripts/run-metrics.sh"
-    },
     {
       "confidence": 1.0,
       "lanes": [
@@ -44,7 +21,28 @@
       "lanes": [
         "autobuilder-artifacts"
       ],
-      "path": "mqo-concept-graph/target/autobuilder/receipts/8ed2068e90c44f94667ef9d2d7e71f34a3b71343.json"
+      "path": "mqo-concept-graph/target/autobuilder/receipts/ci-checks.json"
+    },
+    {
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/receipts/db1dfc638ded610e21820e6b56986a7941005207.json"
+    },
+    {
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/receipts/reviewer-agent.json"
+    },
+    {
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/receipts/risk-gate.json"
     },
     {
       "confidence": 1.0,

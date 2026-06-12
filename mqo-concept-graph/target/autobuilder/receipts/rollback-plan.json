@@ -1,21 +1,21 @@
 {
   "base_ref": "HEAD~1",
-  "base_sha": "7f0cd8d8389c0f481babda34336135d82dfccf06",
+  "base_sha": "db1dfc638ded610e21820e6b56986a7941005207",
   "blocking_count": 0,
-  "captured_at": "2026-06-12T01:02:33Z",
+  "captured_at": "2026-06-12T01:02:46Z",
   "commit_count": 1,
   "commits": [
     {
       "note": "clean revert",
       "parent_count": 1,
       "revertable": true,
-      "sha": "db1dfc638ded610e21820e6b56986a7941005207",
-      "short_sha": "db1dfc6",
-      "subject": "autobuilder: fix proof-lanes globs for monorepo paths"
+      "sha": "578470fdcf28bf5d8516a0f9e7df882fc4dd4416",
+      "short_sha": "578470f",
+      "subject": "autobuilder: update gate receipts for mqo-concept-graph (iter 2)"
     }
   ],
-  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
-  "receipt_digest": "sha256:51d36e6d3284982bd89f06f79c6f114804a6805bc57010172b619dd598f033b3",
+  "head_sha": "578470fdcf28bf5d8516a0f9e7df882fc4dd4416",
+  "receipt_digest": "sha256:910fec8f7ebe6fdfdc954e615b73a81fcce8d74cfd76c168e3440a9c042644ff",
   "revertable_count": 1,
   "rollback_md": "target/autobuilder/rollback.md",
   "schema": "autobuilder.rollback_plan_receipt.v1",
