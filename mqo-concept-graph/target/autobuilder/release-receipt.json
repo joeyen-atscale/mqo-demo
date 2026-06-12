@@ -1,6 +1,6 @@
 {
-  "block_count": 17,
-  "captured_at": "2026-06-12T01:06:14Z",
+  "block_count": 23,
+  "captured_at": "2026-06-12T01:11:47Z",
   "checks": [
     {
       "blocking_count_observed": null,
@@ -22,12 +22,14 @@
     {
       "blocking_count_observed": null,
       "decision_observed": null,
-      "head_sha_match": true,
+      "head_sha_match": false,
       "head_sha_observed": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
       "head_sha_required": true,
       "name": "vti-plan",
-      "notes": [],
-      "pass": true,
+      "notes": [
+        "head_sha mismatch: receipt=46c7cf929adbeb0d91b6816b0de3e8e3ec112452 HEAD=94e8a32b9c958a55b61066bda1901d53204e39ba"
+      ],
+      "pass": false,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/vti-plan.json",
       "present": true,
       "receipt_digest_observed": "sha256:670288c0c3c4c7a4630e101debb47d07cc2bd0db1b4200aa9d1596ddffc891b2",
@@ -39,19 +41,21 @@
     {
       "blocking_count_observed": null,
       "decision_observed": null,
-      "head_sha_match": true,
-      "head_sha_observed": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
+      "head_sha_match": false,
+      "head_sha_observed": null,
       "head_sha_required": true,
       "name": "proof-receipt",
-      "notes": [],
-      "pass": true,
-      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/46c7cf929adbeb0d91b6816b0de3e8e3ec112452.json",
-      "present": true,
-      "receipt_digest_observed": "sha256:proof-receipt-mqo-concept-graph-iter4-final",
+      "notes": [
+        "missing: /Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/94e8a32b9c958a55b61066bda1901d53204e39ba.json"
+      ],
+      "pass": false,
+      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/94e8a32b9c958a55b61066bda1901d53204e39ba.json",
+      "present": false,
+      "receipt_digest_observed": null,
       "schema_expected": "autobuilder.iteration_receipt.v1",
-      "schema_match": true,
-      "schema_observed": "autobuilder.iteration_receipt.v1",
-      "verdict_observed": "baseline"
+      "schema_match": false,
+      "schema_observed": null,
+      "verdict_observed": null
     },
     {
       "blocking_count_observed": 0,
@@ -73,12 +77,14 @@
     {
       "blocking_count_observed": null,
       "decision_observed": "pass",
-      "head_sha_match": true,
+      "head_sha_match": false,
       "head_sha_observed": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
       "head_sha_required": true,
       "name": "reviewer-agent",
-      "notes": [],
-      "pass": true,
+      "notes": [
+        "head_sha mismatch: receipt=46c7cf929adbeb0d91b6816b0de3e8e3ec112452 HEAD=94e8a32b9c958a55b61066bda1901d53204e39ba"
+      ],
+      "pass": false,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/reviewer-agent.json",
       "present": true,
       "receipt_digest_observed": "sha256:reviewer-agent-pass-mqo-concept-graph-46c7cf9",
@@ -90,12 +96,14 @@
     {
       "blocking_count_observed": 0,
       "decision_observed": null,
-      "head_sha_match": true,
+      "head_sha_match": false,
       "head_sha_observed": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
       "head_sha_required": true,
       "name": "rollback-plan",
-      "notes": [],
-      "pass": true,
+      "notes": [
+        "head_sha mismatch: receipt=46c7cf929adbeb0d91b6816b0de3e8e3ec112452 HEAD=94e8a32b9c958a55b61066bda1901d53204e39ba"
+      ],
+      "pass": false,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/rollback-plan.json",
       "present": true,
       "receipt_digest_observed": "sha256:1bbc05a34b027967860272adc0cace1f9e88dda3ea8e326ce50835d1c38de8e5",
@@ -107,12 +115,14 @@
     {
       "blocking_count_observed": null,
       "decision_observed": null,
-      "head_sha_match": true,
+      "head_sha_match": false,
       "head_sha_observed": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
       "head_sha_required": true,
       "name": "ci-checks",
-      "notes": [],
-      "pass": true,
+      "notes": [
+        "head_sha mismatch: receipt=46c7cf929adbeb0d91b6816b0de3e8e3ec112452 HEAD=94e8a32b9c958a55b61066bda1901d53204e39ba"
+      ],
+      "pass": false,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/ci-checks.json",
       "present": true,
       "receipt_digest_observed": null,
@@ -124,12 +134,14 @@
     {
       "blocking_count_observed": null,
       "decision_observed": null,
-      "head_sha_match": true,
+      "head_sha_match": false,
       "head_sha_observed": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
       "head_sha_required": true,
       "name": "session-trace",
-      "notes": [],
-      "pass": true,
+      "notes": [
+        "head_sha mismatch: receipt=46c7cf929adbeb0d91b6816b0de3e8e3ec112452 HEAD=94e8a32b9c958a55b61066bda1901d53204e39ba"
+      ],
+      "pass": false,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/session-trace.json",
       "present": true,
       "receipt_digest_observed": "sha256:0baacce8628cff51c000636a0aeec115894abedfcb5f1fe42d9ce03eb18dcb14",
@@ -462,9 +474,9 @@
       "verdict_observed": null
     }
   ],
-  "head_sha": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
-  "pass_count": 8,
-  "receipt_digest": "sha256:166addd63f54faf70e37a4dc1277fd97e8c82c6265c9ec2e9c107ef8b48b9bd4",
+  "head_sha": "94e8a32b9c958a55b61066bda1901d53204e39ba",
+  "pass_count": 2,
+  "receipt_digest": "sha256:1e70e26e62d31a2549da4deeef1e87dadbd3c1944a00ebd76de12b8c306c35cb",
   "schema": "autobuilder.release_receipt.v1",
   "verdict": "block"
 }

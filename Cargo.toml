@@ -77,6 +77,7 @@ members = [
 
     # ── Concept graph (Gen-8 shared topology artifact) ────────────────────
     "mqo-concept-graph",           # describe_model JSON → attributed property graph (in-memory, no LLM)
+    "mqo-graph-traversal",         # traversal engine: related_measures / causal_paths / suggest_next_questions
 ]
 
 # Shared dependency versions — member crates may opt in with `dep = { workspace = true }`.
