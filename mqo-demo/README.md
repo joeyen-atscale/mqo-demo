@@ -16,6 +16,14 @@ bash install.sh
 
 `install.sh` clones and builds `mqo-mcp-server`, creates a Python venv, installs deps, and checks your env vars. One command, done.
 
+> **⚠️ Use `install.sh` — don't run `cargo build` at the repo root.** The root
+> `Cargo.toml` is a dev convenience whose workspace members live in the
+> **gitignored** sibling `mqo-mcp/` clone, so a bare `cargo build` on a fresh
+> checkout fails with "missing members." `install.sh` builds the fleet against
+> the cloned monorepo's own manifest (`mqo-mcp/Cargo.toml`); if you must build
+> by hand, target that manifest:
+> `cargo build --release --manifest-path ../mqo-mcp/Cargo.toml -p mqo-mcp-server -p mqo-catalog-binder -p mqo-backend-router -p mqo-dax-compiler -p mqo-mdx-compiler`.
+
 Then:
 
 ```bash
