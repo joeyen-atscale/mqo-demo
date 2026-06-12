@@ -1,0 +1,65 @@
+{
+  "base_ref": "HEAD~1",
+  "base_sha": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
+  "captured_at": "2026-06-12T01:00:45Z",
+  "head_sha": "87c2b4d9033f4e4afdd10e3dfb9242891f213502",
+  "min_confidence": 0.7,
+  "proof_lanes_path": "agent/proof-lanes.toml",
+  "proof_lanes_sha256": "sha256:2a682e55aaef792594b22de8cc023fd00b015078bbcbec13be0eb1e31b8826c0",
+  "receipt_digest": "sha256:5213ac5ebe6741c2df895036601d2ced8560517abd7407286290117a8f2ca874",
+  "required_commands": [],
+  "routes": [
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/scripts/run-metrics.sh"
+    },
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/target/autobuilder/metrics.json"
+    },
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/target/autobuilder/postmortem.md"
+    },
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/target/autobuilder/receipts/8ed2068e90c44f94667ef9d2d7e71f34a3b71343.json"
+    },
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/target/autobuilder/receipts/reviewer-agent.json"
+    },
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/target/autobuilder/receipts/session-trace.json"
+    },
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/target/autobuilder/release-receipt.json"
+    },
+    {
+      "confidence": 0.0,
+      "lanes": [],
+      "path": "mcp-interaction-scorer/target/autobuilder/results.tsv"
+    }
+  ],
+  "schema": "autobuilder.vti_plan_receipt.v1",
+  "unrouted_paths": [
+    "mcp-interaction-scorer/scripts/run-metrics.sh",
+    "mcp-interaction-scorer/target/autobuilder/metrics.json",
+    "mcp-interaction-scorer/target/autobuilder/postmortem.md",
+    "mcp-interaction-scorer/target/autobuilder/receipts/8ed2068e90c44f94667ef9d2d7e71f34a3b71343.json",
+    "mcp-interaction-scorer/target/autobuilder/receipts/reviewer-agent.json",
+    "mcp-interaction-scorer/target/autobuilder/receipts/session-trace.json",
+    "mcp-interaction-scorer/target/autobuilder/release-receipt.json",
+    "mcp-interaction-scorer/target/autobuilder/results.tsv"
+  ],
+  "verdict": "block"
+}
