@@ -1,6 +1,6 @@
 {
-  "block_count": 22,
-  "captured_at": "2026-06-12T00:59:29Z",
+  "block_count": 20,
+  "captured_at": "2026-06-12T01:02:13Z",
   "checks": [
     {
       "blocking_count_observed": null,
@@ -22,124 +22,120 @@
     {
       "blocking_count_observed": null,
       "decision_observed": null,
+      "head_sha_match": true,
+      "head_sha_observed": "db1dfc638ded610e21820e6b56986a7941005207",
+      "head_sha_required": true,
+      "name": "vti-plan",
+      "notes": [],
+      "pass": true,
+      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/vti-plan.json",
+      "present": true,
+      "receipt_digest_observed": "sha256:4e0c35192b6c79609bee4730ddcb8139c282f0f01b40b3b5840ee9faf230e10c",
+      "schema_expected": "autobuilder.vti_plan_receipt.v1",
+      "schema_match": true,
+      "schema_observed": "autobuilder.vti_plan_receipt.v1",
+      "verdict_observed": "pass"
+    },
+    {
+      "blocking_count_observed": null,
+      "decision_observed": null,
       "head_sha_match": false,
       "head_sha_observed": null,
       "head_sha_required": true,
-      "name": "vti-plan",
+      "name": "proof-receipt",
       "notes": [
-        "missing: /Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/vti-plan.json"
+        "missing: /Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/db1dfc638ded610e21820e6b56986a7941005207.json"
       ],
       "pass": false,
-      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/vti-plan.json",
+      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/db1dfc638ded610e21820e6b56986a7941005207.json",
       "present": false,
       "receipt_digest_observed": null,
-      "schema_expected": "autobuilder.vti_plan_receipt.v1",
+      "schema_expected": "autobuilder.iteration_receipt.v1",
       "schema_match": false,
       "schema_observed": null,
       "verdict_observed": null
     },
     {
-      "blocking_count_observed": null,
-      "decision_observed": null,
-      "head_sha_match": true,
-      "head_sha_observed": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
-      "head_sha_required": true,
-      "name": "proof-receipt",
-      "notes": [],
-      "pass": true,
-      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/8ed2068e90c44f94667ef9d2d7e71f34a3b71343.json",
-      "present": true,
-      "receipt_digest_observed": "sha256:3b601dc2e000f7a351cee39c5f0ac7cd7fdd6a686566462ea752a27f4f4fe32d",
-      "schema_expected": "autobuilder.iteration_receipt.v1",
-      "schema_match": true,
-      "schema_observed": "autobuilder.iteration_receipt.v1",
-      "verdict_observed": "baseline"
-    },
-    {
-      "blocking_count_observed": null,
+      "blocking_count_observed": 0,
       "decision_observed": null,
       "head_sha_match": true,
       "head_sha_observed": null,
       "head_sha_required": false,
       "name": "risk-gate",
-      "notes": [
-        "missing: /Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/risk-gate.json"
-      ],
-      "pass": false,
+      "notes": [],
+      "pass": true,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/risk-gate.json",
-      "present": false,
+      "present": true,
       "receipt_digest_observed": null,
       "schema_expected": "autobuilder.bad_rust_audit.v1",
-      "schema_match": false,
-      "schema_observed": null,
-      "verdict_observed": null
+      "schema_match": true,
+      "schema_observed": "autobuilder.bad_rust_audit.v1",
+      "verdict_observed": "pass"
     },
     {
       "blocking_count_observed": null,
-      "decision_observed": null,
-      "head_sha_match": false,
-      "head_sha_observed": null,
+      "decision_observed": "concern",
+      "head_sha_match": true,
+      "head_sha_observed": "db1dfc638ded610e21820e6b56986a7941005207",
       "head_sha_required": true,
       "name": "reviewer-agent",
-      "notes": [
-        "missing: /Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/reviewer-agent.json"
-      ],
-      "pass": false,
+      "notes": [],
+      "pass": true,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/reviewer-agent.json",
-      "present": false,
-      "receipt_digest_observed": null,
+      "present": true,
+      "receipt_digest_observed": "sha256:e3e5df56569e1834281dfb217af2f1511a7f8ef1159f9e6978989224b3227556",
       "schema_expected": "autobuilder.reviewer_agent_receipt.v1",
-      "schema_match": false,
-      "schema_observed": null,
+      "schema_match": true,
+      "schema_observed": "autobuilder.reviewer_agent_receipt.v1",
       "verdict_observed": null
     },
     {
-      "blocking_count_observed": null,
+      "blocking_count_observed": 0,
       "decision_observed": null,
       "head_sha_match": false,
-      "head_sha_observed": null,
+      "head_sha_observed": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
       "head_sha_required": true,
       "name": "rollback-plan",
       "notes": [
-        "missing: /Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/rollback-plan.json"
+        "head_sha mismatch: receipt=8ed2068e90c44f94667ef9d2d7e71f34a3b71343 HEAD=db1dfc638ded610e21820e6b56986a7941005207"
       ],
       "pass": false,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/rollback-plan.json",
-      "present": false,
-      "receipt_digest_observed": null,
+      "present": true,
+      "receipt_digest_observed": "sha256:f199d7aa51d957511c65b3b3b3c67a0d70c682f6e8c94ea5c850a5c1318c34aa",
       "schema_expected": "autobuilder.rollback_plan_receipt.v1",
-      "schema_match": false,
-      "schema_observed": null,
-      "verdict_observed": null
-    },
-    {
-      "blocking_count_observed": null,
-      "decision_observed": null,
-      "head_sha_match": false,
-      "head_sha_observed": null,
-      "head_sha_required": true,
-      "name": "ci-checks",
-      "notes": [
-        "missing: /Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/ci-checks.json"
-      ],
-      "pass": false,
-      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/ci-checks.json",
-      "present": false,
-      "receipt_digest_observed": null,
-      "schema_expected": "autobuilder.ci_checks_receipt.v1",
-      "schema_match": false,
-      "schema_observed": null,
-      "verdict_observed": null
+      "schema_match": true,
+      "schema_observed": "autobuilder.rollback_plan_receipt.v1",
+      "verdict_observed": "pass"
     },
     {
       "blocking_count_observed": null,
       "decision_observed": null,
       "head_sha_match": true,
+      "head_sha_observed": "db1dfc638ded610e21820e6b56986a7941005207",
+      "head_sha_required": true,
+      "name": "ci-checks",
+      "notes": [],
+      "pass": true,
+      "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/ci-checks.json",
+      "present": true,
+      "receipt_digest_observed": null,
+      "schema_expected": "autobuilder.ci_checks_receipt.v1",
+      "schema_match": true,
+      "schema_observed": "autobuilder.ci_checks_receipt.v1",
+      "verdict_observed": "skipped"
+    },
+    {
+      "blocking_count_observed": null,
+      "decision_observed": null,
+      "head_sha_match": false,
       "head_sha_observed": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
       "head_sha_required": true,
       "name": "session-trace",
-      "notes": [],
-      "pass": true,
+      "notes": [
+        "head_sha mismatch: receipt=8ed2068e90c44f94667ef9d2d7e71f34a3b71343 HEAD=db1dfc638ded610e21820e6b56986a7941005207"
+      ],
+      "pass": false,
       "path": "/Users/jsy/Documents/projects/mqo-concept-graph/target/autobuilder/receipts/session-trace.json",
       "present": true,
       "receipt_digest_observed": "sha256:a84b8306de56d8e6b8df3106865ef814918cb839dbf7af88d0b7b35e9ebd0e63",
@@ -472,9 +468,9 @@
       "verdict_observed": null
     }
   ],
-  "head_sha": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
-  "pass_count": 3,
-  "receipt_digest": "sha256:c945e242c937848ac108e88311186f887e7c2fc05789ed6f763fd20f607a5752",
+  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "pass_count": 5,
+  "receipt_digest": "sha256:ca98b15dd3d3eba95086358b9b59c6f2d56c14606d175409b546a512a53073d9",
   "schema": "autobuilder.release_receipt.v1",
   "verdict": "block"
 }

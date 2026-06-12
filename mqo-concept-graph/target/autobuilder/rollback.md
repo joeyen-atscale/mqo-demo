@@ -1,7 +1,7 @@
 # Rollback plan
 
-HEAD: `8ed2068e90c44f94667ef9d2d7e71f34a3b71343`
-Base: `HEAD~1` (`fa887b233f9e4204d4532fed2addd1c3fabaa9af`)
+HEAD: `db1dfc638ded610e21820e6b56986a7941005207`
+Base: `HEAD~1` (`7f0cd8d8389c0f481babda34336135d82dfccf06`)
 
 Reverts are listed newest → oldest. Each `git revert` was
 dry-run via `git merge-tree --write-tree` against current HEAD,
@@ -9,8 +9,8 @@ so the working tree was not touched during verification.
 
 | # | sha | revertable | command | subject |
 |---|---|---|---|---|
-| 1 | `8ed2068` | ✓ | `git revert 8ed2068` | autobuilder: implement mqo-concept-graph |
+| 1 | `db1dfc6` | ✓ | `git revert db1dfc6` | autobuilder: fix proof-lanes globs for monorepo paths |
 
 ## Notes
 
-- `8ed2068` — clean revert
+- `db1dfc6` — clean revert

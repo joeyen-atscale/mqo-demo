@@ -1,21 +1,21 @@
 {
   "base_ref": "HEAD~1",
-  "base_sha": "fa887b233f9e4204d4532fed2addd1c3fabaa9af",
+  "base_sha": "7f0cd8d8389c0f481babda34336135d82dfccf06",
   "blocking_count": 0,
-  "captured_at": "2026-06-12T00:59:57Z",
+  "captured_at": "2026-06-12T01:02:33Z",
   "commit_count": 1,
   "commits": [
     {
       "note": "clean revert",
       "parent_count": 1,
       "revertable": true,
-      "sha": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
-      "short_sha": "8ed2068",
-      "subject": "autobuilder: implement mqo-concept-graph"
+      "sha": "db1dfc638ded610e21820e6b56986a7941005207",
+      "short_sha": "db1dfc6",
+      "subject": "autobuilder: fix proof-lanes globs for monorepo paths"
     }
   ],
-  "head_sha": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
-  "receipt_digest": "sha256:f199d7aa51d957511c65b3b3b3c67a0d70c682f6e8c94ea5c850a5c1318c34aa",
+  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "receipt_digest": "sha256:51d36e6d3284982bd89f06f79c6f114804a6805bc57010172b619dd598f033b3",
   "revertable_count": 1,
   "rollback_md": "target/autobuilder/rollback.md",
   "schema": "autobuilder.rollback_plan_receipt.v1",

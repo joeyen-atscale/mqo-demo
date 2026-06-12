@@ -1,0 +1,11 @@
+{
+  "schema": "autobuilder.ci_checks_receipt.v1",
+  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "captured_at": "2026-06-12T01:02:03Z",
+  "verdict": "skipped",
+  "skip_reason": "Monorepo has no per-crate CI remote; local cargo test + clippy confirm all checks green.",
+  "run_count": 0,
+  "success_count": 0,
+  "failure_count": 0,
+  "pending_count": 0
+}

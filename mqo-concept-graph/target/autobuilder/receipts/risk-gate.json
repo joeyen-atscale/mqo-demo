@@ -1,0 +1,11 @@
+{
+  "schema": "autobuilder.bad_rust_audit.v1",
+  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "captured_at": "2026-06-12T01:01:50Z",
+  "blocking_count": 0,
+  "advisory_count": 0,
+  "findings": [],
+  "deny_unsafe": "pass",
+  "notes": "No unsafe code (#![deny(unsafe_code)]). No BAD_RUST advisories. Clean audit.",
+  "verdict": "pass"
+}

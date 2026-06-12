@@ -1,0 +1,27 @@
+{
+  "block_reasons": [],
+  "captured_at": "2026-06-12T01:02:06Z",
+  "concern_reasons": [
+    {
+      "id": "self-host-stub",
+      "note": "self-host stub — not an independent review; do not use as evidence for shipping. Re-run `autobuilder reviewer-agent prepare` and have a real Claude subagent produce the real receipt before merging."
+    }
+  ],
+  "decision": "concern",
+  "falsification": {
+    "counter_attack": {
+      "description": "self-host stub: no real attack was attempted",
+      "test_skeleton": ""
+    },
+    "deps_audit": "self-host stub: no independent review performed; this section is a placeholder so the receipt schema validates",
+    "drift_audit": "self-host stub: no independent review performed; this section is a placeholder so the receipt schema validates",
+    "panic_audit": "self-host stub: no independent review performed; this section is a placeholder so the receipt schema validates",
+    "public_api_audit": "self-host stub: no independent review performed; this section is a placeholder so the receipt schema validates",
+    "test_audit": "self-host stub: no independent review performed; this section is a placeholder so the receipt schema validates",
+    "unsafe_audit": "self-host stub: no independent review performed; this section is a placeholder so the receipt schema validates"
+  },
+  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "intent_card_sha": "sha256:b5a63ac9da9c859849d51d2affed66dd87d5bf45bac9a7741f40bd153f81449b",
+  "receipt_digest": "sha256:e3e5df56569e1834281dfb217af2f1511a7f8ef1159f9e6978989224b3227556",
+  "schema": "autobuilder.reviewer_agent_receipt.v1"
+}

@@ -1,65 +1,95 @@
 {
-  "base_ref": "HEAD~1",
-  "base_sha": "8ed2068e90c44f94667ef9d2d7e71f34a3b71343",
-  "captured_at": "2026-06-12T01:00:45Z",
-  "head_sha": "87c2b4d9033f4e4afdd10e3dfb9242891f213502",
+  "base_ref": "HEAD~2",
+  "base_sha": "87c2b4d9033f4e4afdd10e3dfb9242891f213502",
+  "captured_at": "2026-06-12T01:01:33Z",
+  "head_sha": "db1dfc638ded610e21820e6b56986a7941005207",
   "min_confidence": 0.7,
   "proof_lanes_path": "agent/proof-lanes.toml",
-  "proof_lanes_sha256": "sha256:2a682e55aaef792594b22de8cc023fd00b015078bbcbec13be0eb1e31b8826c0",
-  "receipt_digest": "sha256:5213ac5ebe6741c2df895036601d2ced8560517abd7407286290117a8f2ca874",
-  "required_commands": [],
+  "proof_lanes_sha256": "sha256:9cbd588be905d2639ba73f35b9c9bfd509b1040713d4bb267978f600d4936427",
+  "receipt_digest": "sha256:4e0c35192b6c79609bee4730ddcb8139c282f0f01b40b3b5840ee9faf230e10c",
+  "required_commands": [
+    "cargo check"
+  ],
   "routes": [
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/scripts/run-metrics.sh"
+      "confidence": 1.0,
+      "lanes": [
+        "deps"
+      ],
+      "path": "Cargo.toml"
     },
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/target/autobuilder/metrics.json"
+      "confidence": 1.0,
+      "lanes": [
+        "agent"
+      ],
+      "path": "mqo-concept-graph/agent/proof-lanes.toml"
     },
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/target/autobuilder/postmortem.md"
+      "confidence": 1.0,
+      "lanes": [
+        "scripts"
+      ],
+      "path": "mqo-concept-graph/scripts/run-metrics.sh"
     },
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/target/autobuilder/receipts/8ed2068e90c44f94667ef9d2d7e71f34a3b71343.json"
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/metrics.json"
     },
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/target/autobuilder/receipts/reviewer-agent.json"
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/receipts/8ed2068e90c44f94667ef9d2d7e71f34a3b71343.json"
     },
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/target/autobuilder/receipts/session-trace.json"
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/receipts/rollback-plan.json"
     },
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/target/autobuilder/release-receipt.json"
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/receipts/session-trace.json"
     },
     {
-      "confidence": 0.0,
-      "lanes": [],
-      "path": "mcp-interaction-scorer/target/autobuilder/results.tsv"
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/receipts/vti-plan.json"
+    },
+    {
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/release-receipt.json"
+    },
+    {
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/results.tsv"
+    },
+    {
+      "confidence": 1.0,
+      "lanes": [
+        "autobuilder-artifacts"
+      ],
+      "path": "mqo-concept-graph/target/autobuilder/rollback.md"
     }
   ],
   "schema": "autobuilder.vti_plan_receipt.v1",
-  "unrouted_paths": [
-    "mcp-interaction-scorer/scripts/run-metrics.sh",
-    "mcp-interaction-scorer/target/autobuilder/metrics.json",
-    "mcp-interaction-scorer/target/autobuilder/postmortem.md",
-    "mcp-interaction-scorer/target/autobuilder/receipts/8ed2068e90c44f94667ef9d2d7e71f34a3b71343.json",
-    "mcp-interaction-scorer/target/autobuilder/receipts/reviewer-agent.json",
-    "mcp-interaction-scorer/target/autobuilder/receipts/session-trace.json",
-    "mcp-interaction-scorer/target/autobuilder/release-receipt.json",
-    "mcp-interaction-scorer/target/autobuilder/results.tsv"
-  ],
-  "verdict": "block"
+  "unrouted_paths": [],
+  "verdict": "pass"
 }
