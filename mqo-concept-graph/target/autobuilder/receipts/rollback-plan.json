@@ -1,21 +1,21 @@
 {
   "base_ref": "HEAD~1",
-  "base_sha": "db1dfc638ded610e21820e6b56986a7941005207",
+  "base_sha": "578470fdcf28bf5d8516a0f9e7df882fc4dd4416",
   "blocking_count": 0,
-  "captured_at": "2026-06-12T01:02:46Z",
+  "captured_at": "2026-06-12T01:05:22Z",
   "commit_count": 1,
   "commits": [
     {
       "note": "clean revert",
       "parent_count": 1,
       "revertable": true,
-      "sha": "578470fdcf28bf5d8516a0f9e7df882fc4dd4416",
-      "short_sha": "578470f",
-      "subject": "autobuilder: update gate receipts for mqo-concept-graph (iter 2)"
+      "sha": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
+      "short_sha": "46c7cf9",
+      "subject": "autobuilder: finalize reviewer and proof receipts for mqo-concept-graph"
     }
   ],
-  "head_sha": "578470fdcf28bf5d8516a0f9e7df882fc4dd4416",
-  "receipt_digest": "sha256:910fec8f7ebe6fdfdc954e615b73a81fcce8d74cfd76c168e3440a9c042644ff",
+  "head_sha": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
+  "receipt_digest": "sha256:1bbc05a34b027967860272adc0cace1f9e88dda3ea8e326ce50835d1c38de8e5",
   "revertable_count": 1,
   "rollback_md": "target/autobuilder/rollback.md",
   "schema": "autobuilder.rollback_plan_receipt.v1",

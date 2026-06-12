@@ -1,6 +1,6 @@
 # Postmortem — mqo-concept-graph
 
-HEAD: `578470fdcf28bf5d8516a0f9e7df882fc4dd4416`
+HEAD: `46c7cf929adbeb0d91b6816b0de3e8e3ec112452`
 
 ## Iteration breakdown
 

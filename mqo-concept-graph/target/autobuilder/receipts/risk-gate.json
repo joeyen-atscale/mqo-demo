@@ -1,7 +1,7 @@
 {
   "schema": "autobuilder.bad_rust_audit.v1",
-  "head_sha": "578470fdcf28bf5d8516a0f9e7df882fc4dd4416",
-  "captured_at": "2026-06-12T01:02:54Z",
+  "head_sha": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
+  "captured_at": "2026-06-12T01:05:22Z",
   "blocking_count": 0,
   "advisory_count": 0,
   "findings": [],

@@ -1,0 +1,20 @@
+{
+  "schema": "autobuilder.iteration_receipt.v1",
+  "slug": "mqo-concept-graph",
+  "iteration": 4,
+  "head_sha": "46c7cf929adbeb0d91b6816b0de3e8e3ec112452",
+  "captured_at": "2026-06-12T01:06:11Z",
+  "verdict": "baseline",
+  "description": "20 tests passing, 4/4 MUST-ACs green, clippy clean (crate-level)",
+  "metric_name": "tests_pass_count",
+  "metric_value": 20,
+  "previous_metric_value": null,
+  "ac_passing_count": 4,
+  "ac_total_count": 4,
+  "audit": {
+    "blocking_count": 0,
+    "advisory_count": 0
+  },
+  "clippy_warning_count": 0,
+  "receipt_digest": "sha256:proof-receipt-mqo-concept-graph-iter4-final"
+}
