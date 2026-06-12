@@ -1,11 +1,11 @@
 #!/bin/bash
-# install.sh — one-shot setup for mqo-demo + mqo-mcp-server
+# install.sh — one-shot setup for mqo-demo + the full MQO fleet
 # Run from the mqo-demo directory: bash install.sh
 set -euo pipefail
 
 DEMO_DIR="$(cd "$(dirname "$0")" && pwd)"
 PARENT_DIR="$(dirname "$DEMO_DIR")"
-MCP_DIR="$PARENT_DIR/mqo-mcp-server"
+LOCAL_BIN="$HOME/.local/bin"
 
 GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; NC='\033[0m'
 ok()   { echo -e "${GREEN}✓${NC} $*"; }
@@ -33,26 +33,41 @@ else
   fail "python3 $PY_VER found but 3.10+ is required"
 fi
 
-# ── 2. mqo-mcp-server ──────────────────────────────────────────────────────────
+mkdir -p "$LOCAL_BIN"
 
-if [ ! -d "$MCP_DIR" ]; then
-  echo ""
-  echo "Cloning mqo-mcp-server into $MCP_DIR ..."
-  git clone https://github.com/joeyen-atscale/mqo-mcp-server.git "$MCP_DIR"
-  ok "cloned mqo-mcp-server"
-else
-  ok "mqo-mcp-server found at $MCP_DIR"
-fi
+# ── 2. Clone + build the MQO fleet ─────────────────────────────────────────────
+# mqo-mcp-server orchestrates these four binaries as subprocesses.
+# They're installed to ~/.local/bin, which the server checks automatically.
 
-BINARY="$MCP_DIR/target/release/mqo-mcp-server"
-if [ ! -x "$BINARY" ]; then
-  echo ""
-  echo "Building mqo-mcp-server (this takes ~1 minute the first time)..."
-  cargo build --release --manifest-path "$MCP_DIR/Cargo.toml"
-  ok "built $BINARY"
-else
-  ok "binary already built: $BINARY"
-fi
+clone_and_build() {
+  local repo="$1"
+  local binary="$2"   # binary name to install (empty = lib only, skip install)
+  local dir="$PARENT_DIR/$repo"
+
+  if [ ! -d "$dir" ]; then
+    echo "  Cloning $repo..."
+    git clone "https://github.com/joeyen-atscale/$repo.git" "$dir" --quiet
+  fi
+
+  if [ -n "$binary" ]; then
+    if [ -x "$LOCAL_BIN/$binary" ]; then
+      ok "$binary already installed"
+      return
+    fi
+    echo "  Building $repo..."
+    cargo build --release --manifest-path "$dir/Cargo.toml" --quiet
+    cp "$dir/target/release/$binary" "$LOCAL_BIN/$binary"
+    ok "installed $binary → $LOCAL_BIN/$binary"
+  fi
+}
+
+echo "Setting up MQO fleet..."
+clone_and_build "mqo-spec"             ""
+clone_and_build "mqo-catalog-binder"   "mqo-bind"
+clone_and_build "mqo-backend-router"   "mqo-route"
+clone_and_build "mqo-dax-compiler"     "mqo-dax"
+clone_and_build "mqo-mdx-compiler"     "mqo-mdx"
+clone_and_build "mqo-mcp-server"       "mqo-mcp-server"
 
 # ── 3. Python venv ─────────────────────────────────────────────────────────────
 
