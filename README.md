@@ -17,27 +17,31 @@ Plain English → Claude builds an MQO → validate & bind to the live catalog
 
 ```
 .
-├── mqo-demo/          ← the Streamlit app + installer (start here)
+├── install.sh         ← one-shot setup (run this)
+├── start.sh           ← launcher
+├── .env.example       ← copy to .env, set your Anthropic key
+├── mqo-demo/          ← the Streamlit app
 │   ├── app.py             chat UI + Claude tool loop
-│   ├── mcp_bridge.py      stdio JSON-RPC bridge to mqo-mcp-server
-│   ├── install.sh         one-shot setup (clones + builds the engine, makes a venv)
-│   └── start.sh           launcher
+│   └── mcp_bridge.py      stdio JSON-RPC bridge to mqo-mcp-server
 ├── ARCHITECTURE.md    ← how the pieces fit together
 └── (Rust workspace crates used by the demo)
 ```
 
-## Quick start
+## Quick start — three commands
 
 ```bash
 git clone https://github.com/joeyen-atscale/mqo-demo.git
-cd mqo-demo/mqo-demo          # the app lives in the mqo-demo/ subdirectory
-bash install.sh              # clones + builds joeyen-atscale/mqo-mcp, builds 5 binaries, makes a venv
-export ANTHROPIC_API_KEY="sk-ant-..."
-./start.sh                   # opens http://localhost:8501
+cd mqo-demo
+./install.sh                         # clone+build the engine, build binaries, make a venv, write .env
+#  → edit .env and set ANTHROPIC_API_KEY=sk-ant-...
+./start.sh                           # opens the chat UI at http://localhost:8501
 ```
 
-`install.sh` clones and builds the [`mqo-mcp`](https://github.com/joeyen-atscale/mqo-mcp) engine
-(both repos are public), installs the Python deps, and checks your environment.
+`./install.sh` clones the [`mqo-mcp`](https://github.com/joeyen-atscale/mqo-mcp) engine at the
+**current `main`** (re-running pulls latest and rebuilds only if needed), builds the server **and
+all four pipeline helpers** (`mqo-bind`/`route`/`dax`/`mdx` — the engine shells out to them, so they
+must be current together), installs the Python deps, and writes `.env` from `.env.example`.
+`./start.sh` loads `.env` and launches the app. Both repos are public.
 
 ## Prerequisites
 

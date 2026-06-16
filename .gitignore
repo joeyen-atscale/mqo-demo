@@ -1,1 +1,3 @@
 mqo-mcp/
+.env
+mqo-demo/.venv/
