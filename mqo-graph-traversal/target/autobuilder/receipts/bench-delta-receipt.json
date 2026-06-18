@@ -1,1 +1,0 @@
-{"schema":"autobuilder.bench_delta_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"skipped","notes":"AC6 (latency bench) is SHOULD-level; no criterion bench in v1. Baseline perf confirmed via build time."}

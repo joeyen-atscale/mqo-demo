@@ -1,3 +1,4 @@
 mqo-mcp/
 .env
 mqo-demo/.venv/
+**/target/autobuilder/

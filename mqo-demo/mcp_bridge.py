@@ -20,6 +20,10 @@ from pathlib import Path
 from typing import Any
 
 # ── Live cluster configuration (from the demo brief) ───────────────────────────
+#
+# Override any of the cluster constants below via environment variables so a
+# colleague on a different AtScale instance can redirect the demo without
+# editing this file.
 
 def _resolve_binary() -> str:
     if v := os.environ.get("MQO_MCP_BINARY"):
@@ -50,20 +54,29 @@ def _resolve_catalog() -> str:
 
 BINARY = _resolve_binary()
 CATALOG = _resolve_catalog()
-ENDPOINT = "mcp-aws.atscaleinternal.com:15432"
-XMLA_URL = "https://mcp-aws.atscaleinternal.com/v1/xmla"
-OIDC_TOKEN_URL = (
-    "https://mcp-aws.atscaleinternal.com/auth/realms/atscale/protocol/"
-    "openid-connect/token"
+ENDPOINT = os.environ.get("ATSCALE_ENDPOINT", "mcp-aws.atscaleinternal.com:15432")
+XMLA_URL = os.environ.get(
+    "ATSCALE_XMLA_URL",
+    f"https://{ENDPOINT.split(':')[0]}/v1/xmla",
 )
-OIDC_CLIENT_ID = "atscale-mcp"
-OIDC_REALM = "atscale"  # derived from the realm segment of OIDC_TOKEN_URL
+OIDC_TOKEN_URL = os.environ.get(
+    "ATSCALE_OIDC_TOKEN_URL",
+    "https://mcp-aws.atscaleinternal.com/auth/realms/atscale/protocol/openid-connect/token",
+)
+OIDC_CLIENT_ID = os.environ.get("ATSCALE_OIDC_CLIENT_ID", "atscale-mcp")
+OIDC_REALM = os.environ.get("ATSCALE_OIDC_REALM", "atscale")
 OIDC_SECRET_ENV = "ATSCALE_OIDC_SECRET"
+
+# PGWire (SQL backend) direct credentials.  When ATSCALE_PG_USER is set, the
+# server uses username+password for SQL queries instead of the OIDC bearer token.
+# Required for the SQL path on the mcp-aws cluster (token auth is rejected there).
+PG_USER_ENV = "ATSCALE_PG_USER"
+PG_PASS_ENV = "ATSCALE_PG_PASSWORD"
 
 # The live binder resolves MQO models by their short name (as returned by
 # list_models), NOT the fully-qualified atscale_catalogs.<schema>.<model> path —
 # the latter has no XMLA catalog/cube mapping and fails with xmla_coords_not_found.
-MODEL_PATH = "tpcds_benchmark_model"
+MODEL_PATH = os.environ.get("ATSCALE_MODEL", "tpcds_benchmark_model")
 
 STDERR_LOG = Path("/tmp/mqo-mcp-server.stderr.log")
 
@@ -78,7 +91,7 @@ class McpError(Exception):
 
 
 def server_args() -> list[str]:
-    return [
+    args = [
         BINARY,
         "--catalog", CATALOG,
         "--endpoint", ENDPOINT,
@@ -88,6 +101,9 @@ def server_args() -> list[str]:
         "--oidc-realm", OIDC_REALM,
         "--oidc-client-secret-env", OIDC_SECRET_ENV,
     ]
+    if os.environ.get(PG_USER_ENV):
+        args += ["--pg-user", os.environ[PG_USER_ENV], "--pg-pass-env", PG_PASS_ENV]
+    return args
 
 
 class McpBridge:

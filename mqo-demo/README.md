@@ -11,23 +11,27 @@ Ask a plain-English BI question. Get a governed Vega-Lite chart in under 15 seco
 ```bash
 git clone https://github.com/joeyen-atscale/mqo-demo.git
 cd mqo-demo
-bash install.sh
+./install.sh
 ```
 
-`install.sh` clones and builds `mqo-mcp-server`, creates a Python venv, installs deps, and checks your env vars. One command, done.
+`install.sh` clones and builds `mqo-mcp-server`, creates a Python venv, installs deps, and writes `.env` from `.env.example`. One command, done.
 
-> **⚠️ Use `install.sh` — don't run `cargo build` at the repo root.** The root
+> **⚠️ Use `./install.sh` — don't run `cargo build` at the repo root.** The root
 > `Cargo.toml` is a dev convenience whose workspace members live in the
 > **gitignored** sibling `mqo-mcp/` clone, so a bare `cargo build` on a fresh
-> checkout fails with "missing members." `install.sh` builds the fleet against
-> the cloned monorepo's own manifest (`mqo-mcp/Cargo.toml`); if you must build
-> by hand, target that manifest:
-> `cargo build --release --manifest-path ../mqo-mcp/Cargo.toml -p mqo-mcp-server -p mqo-catalog-binder -p mqo-backend-router -p mqo-dax-compiler -p mqo-mdx-compiler`.
+> checkout fails with "missing members."
 
-Then:
+Then edit `.env` (in the repo root — same directory as `install.sh`) and fill in your credentials:
+
+```
+ANTHROPIC_API_KEY=sk-ant-...
+ATSCALE_PG_USER=your-atscale-username
+ATSCALE_PG_PASSWORD=your-atscale-password
+```
+
+Then launch from the repo root (it loads `.env` automatically):
 
 ```bash
-export ANTHROPIC_API_KEY="sk-ant-..."
 ./start.sh
 ```
 
@@ -82,12 +86,19 @@ The left sidebar shows the server connection status, active model path, last que
 
 ## Environment variables
 
+Set all of these in the `.env` file at the repo root (not in your shell). `./start.sh` loads `.env` automatically.
+
 | Variable | Required | Default | Purpose |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | Yes | — | Claude API key |
-| `ATSCALE_OIDC_SECRET` | No | `atscale` | OIDC client secret for AtScale |
+| `ANTHROPIC_API_KEY` | **Yes** | — | Claude API key |
+| `ATSCALE_PG_USER` | **Yes** | — | AtScale username for PGWire (SQL backend) |
+| `ATSCALE_PG_PASSWORD` | **Yes** | — | AtScale password for PGWire. Special characters are fine — `.env` values are read verbatim. |
+| `ATSCALE_OIDC_SECRET` | No | `atscale` | OIDC client secret (DAX/MDX path) |
 | `MQO_MCP_BINARY` | No | auto-resolved | Override path to `mqo-mcp-server` binary |
 | `MQO_MCP_CATALOG` | No | auto-resolved | Override path to `tpcds_catalog.json` |
+| `ATSCALE_ENDPOINT` | No | `mcp-aws.atscaleinternal.com:15432` | Override cluster host:port |
+| `ATSCALE_XMLA_URL` | No | derived from endpoint | Override XMLA URL |
+| `ATSCALE_MODEL` | No | `tpcds_benchmark_model` | Override model short name |
 
 The binary is resolved automatically: sibling-repo build first (`../mqo-mcp-server/target/release/`), then shared workspace build (`../target/release/`), then `MQO_MCP_BINARY`.
 

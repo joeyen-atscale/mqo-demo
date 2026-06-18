@@ -1,1 +1,0 @@
-{"schema":"autobuilder.schema_compat_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"pass","notes":"All public serde types are additive-forward compatible. No breaking field removals or renames in v0.1.0."}

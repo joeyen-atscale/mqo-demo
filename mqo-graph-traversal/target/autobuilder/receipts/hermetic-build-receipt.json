@@ -1,1 +1,0 @@
-{"schema":"autobuilder.hermetic_build_receipt.v1","head_sha":"94e8a32b9c958a55b61066bda1901d53204e39ba","captured_at":"2026-06-12T01:12:03Z","verdict":"pass","notes":"cargo build --manifest-path succeeds offline once deps are cached. No build.rs, no network I/O, no proc-macros that fetch. Build is hermetic."}
