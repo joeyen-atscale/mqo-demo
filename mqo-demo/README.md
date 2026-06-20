@@ -1,6 +1,6 @@
 # mqo-demo
 
-Ask a plain-English BI question. Get a governed Vega-Lite chart in under 15 seconds.
+Ask a plain-English BI question, get a governed Vega-Lite chart.
 
 `mqo-demo` is a Streamlit chat UI that drives `claude-sonnet-4-6` over the AtScale semantic layer via `mqo-mcp-server`. You type a question; Claude builds a Multidimensional Query Object, runs it against AtScale, and renders a chart — no SQL, no hardcoded queries. Refinement is conversational: *"break that down by quarter"*, *"add a region filter"*, *"show net profit instead"*.
 
