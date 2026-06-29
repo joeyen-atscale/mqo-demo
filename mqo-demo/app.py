@@ -59,7 +59,9 @@ def _render_suggestions() -> None:
     for i, question in enumerate(samples):
         if st.button(question, key=f"suggest_{i}", use_container_width=True):
             st.session_state._pending_q = question
-            st.session_state.sample_qs = _sample_questions()  # rotate for next time
+            # Keep the same chips on screen — re-sampling here makes the button
+            # the user just clicked appear to change to a different question,
+            # which is disconcerting. The set is sampled once per session.
             st.rerun()
 
 SYSTEM_PROMPT = f"""\
